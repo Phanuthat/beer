@@ -4,7 +4,7 @@ import RouteMenu from './RouteMenu';
 import { connect } from 'react-redux';
 
 const { Header, Content, Footer } = Layout;
-const menus = ['home', 'favorite', 'profile'];
+const menus = ['home', 'favorite', 'profile','cart'];
 
 const mapStateToProps = state => {
   return {
@@ -32,7 +32,8 @@ class MainPage extends Component {
     items: [],
     currentMenu: menus[0],
     email: '',
-    favItems: []
+    favItems: [],
+    cartItem:[]
   };
 
   componentDidMount() {
@@ -87,6 +88,37 @@ class MainPage extends Component {
     }
   };
 
+  onClickCartItem = () => {
+    const items = this.state.cartItem;
+    const itemCart = this.props.itemBeer;
+    const index = items.findIndex(item => {
+      return item.name === itemCart.name;
+    });
+    if (index != -1) {
+      items.splice(index, 1);
+      localStorage.setItem(
+        `beer-ja-list-cart-${this.state.email}`,
+        JSON.stringify(items)
+      );
+      message.success('unCart this item successfully', 1, () => {
+        this.setState({ cartItems: items });
+        this.onModalClickCancel();
+      });
+    } else {
+      items.push(itemCart);
+      localStorage.setItem(
+        `beer-ja-list-cart-${this.state.email}`,
+        JSON.stringify(items)
+      );
+      message.success('Saved your cart this item', 1, () => {
+        this.setState({ cartItems: items });
+        this.onModalClickCancel();
+      });
+    }
+  };
+
+
+
   onClickBuyItem = () => {
     message.info('coming soon...');
     this.props.onDismissDialog();
@@ -136,6 +168,7 @@ class MainPage extends Component {
                 <Menu.Item key={menus[0]}>Home</Menu.Item>
                 <Menu.Item key={menus[1]}>Favorite</Menu.Item>
                 <Menu.Item key={menus[2]}>Profile</Menu.Item>
+                <Menu.Item key={menus[3]}>Cart</Menu.Item>
               </Menu>
             </Header>
             <Content>
