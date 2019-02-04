@@ -4,7 +4,7 @@ import RouteMenu from './RouteMenu';
 import { connect } from 'react-redux';
 
 const { Header, Content, Footer } = Layout;
-const menus = ['home', 'favorite', 'profile','cart'];
+const menus = ['home', 'favorite', 'cart','profile'];
 
 const mapStateToProps = state => {
   return {
@@ -110,7 +110,7 @@ class MainPage extends Component {
         `beer-ja-list-cart-${this.state.email}`,
         JSON.stringify(items)
       );
-      message.success('Saved your cart this item', 1, () => {
+      message.success('Buy item', 1, () => {
         this.setState({ cartItems: items });
         this.onModalClickCancel();
       });
@@ -167,8 +167,9 @@ class MainPage extends Component {
               >
                 <Menu.Item key={menus[0]}>Home</Menu.Item>
                 <Menu.Item key={menus[1]}>Favorite</Menu.Item>
-                <Menu.Item key={menus[2]}>Profile</Menu.Item>
-                <Menu.Item key={menus[3]}>Cart</Menu.Item>
+                <Menu.Item key={menus[2]}>Cart</Menu.Item>
+                <Menu.Item key={menus[3]}>Profile</Menu.Item>
+               
               </Menu>
             </Header>
             <Content>
@@ -203,7 +204,7 @@ class MainPage extends Component {
                   icon="shopping-cart"
                   size="large"
                   shape="circle"
-                  onClick={this.onClickBuyItem}
+                  onClick={this.onClickCartItem}
                 />
               ]}
             >

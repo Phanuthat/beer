@@ -4,12 +4,12 @@ import 'firebase/database';
 import 'firebase/auth';
 
 const config = {
-  apiKey: 'AIzaSyBbILHVxVIcPg_B3pA-dLxo9GFVN2catj8',
-  authDomain: 'example-everything.firebaseapp.com',
-  databaseURL: 'https://example-everything.firebaseio.com',
-  projectId: 'example-everything',
-  storageBucket: 'example-everything.appspot.com',
-  messagingSenderId: '793947592819'
+  apiKey: "AIzaSyCYI0MjI3zjff_2FktXw5RYPzLr5qIs2fQ",
+  authDomain: "project-6321423145720335583.firebaseapp.com",
+  databaseURL: "https://project-6321423145720335583.firebaseio.com",
+  projectId: "project-6321423145720335583",
+  storageBucket: "project-6321423145720335583.appspot.com",
+  messagingSenderId: "770695429061"
 };
 
 firebase.initializeApp(config);
