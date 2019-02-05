@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spin } from 'antd';
+import { Button} from 'antd';
 import { connect } from 'react-redux';
 import ListCart from '../components/Cart/list_cart';
 
@@ -49,8 +49,17 @@ class CartPage extends Component {
           minHeight: '600px'
         }}
       >
-        
         <ListCart items={this.getItems()} />
+
+        <div>
+          {/* <Button
+            type="primary"
+            // loading={this.state.isLoading}
+            // onClick={this.onClickLogout}
+          >
+            Logout
+          </Button> */}
+        </div>
       </div>
     );
   }
