@@ -13,7 +13,7 @@ class LoginPage extends Component {
   };
 
   componentDidMount() {
-    const jsonStr = localStorage.getItem('user-data');
+    const jsonStr = localStorage.getItem('user-data');// "{name:"dghh", pass:1326, isLoggedin: true}""
     const isLoggedIn = jsonStr && JSON.parse(jsonStr).isLoggedIn;
     if (isLoggedIn) {
       this.navigateToMainPage();

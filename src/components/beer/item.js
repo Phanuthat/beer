@@ -16,7 +16,9 @@ const mapDispatchToProps = dispatch => {
 };
 
 function BeerItem(props) {
+  console.log(props.item.attenuation_level);
   return (
+    
     <Card
       onClick={() => {
         props.onItemBeerClick(props.item);
@@ -32,8 +34,12 @@ function BeerItem(props) {
       }
     >
       <Meta
+        
+       
         title={props.item.name}
+        description={props.item.attenuation_level}
         description={
+         
           <TextTruncate
             line={2}
             truncateText="…"
@@ -44,6 +50,8 @@ function BeerItem(props) {
       />
     </Card>
   );
+  
+  
 }
 
 export default connect(

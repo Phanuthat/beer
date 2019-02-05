@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Modal, Button, message } from 'antd';
+import {
+  Layout,
+  Menu,
+  Modal,
+  Button,
+  message,
+  Icon,
+  Input,
+  AutoComplete
+} from 'antd';
+// import axios from 'axios'
 import RouteMenu from './RouteMenu';
 import { connect } from 'react-redux';
 
 const { Header, Content, Footer } = Layout;
-const menus = ['home', 'favorite', 'cart','profile'];
+const menus = ['home', 'favorite', 'cart', 'profile'];
 
 const mapStateToProps = state => {
   return {
@@ -33,8 +43,16 @@ class MainPage extends Component {
     currentMenu: menus[0],
     email: '',
     favItems: [],
-    cartItem:[]
+    cartItem: []
   };
+  // getInfo = () => {
+  //   axios.get(`${this.state.items}`)
+  //     .then(({ data }) => {
+  //       this.setState({
+  //         results: data.data
+  //       })
+  //     })
+  // }
 
   componentDidMount() {
     const jsonStr = localStorage.getItem('user-data');
@@ -100,7 +118,7 @@ class MainPage extends Component {
         `beer-ja-list-cart-${this.state.email}`,
         JSON.stringify(items)
       );
-      message.success('unCart this item successfully', 1, () => {
+      message.success('unCart ', 1, () => {
         this.setState({ cartItems: items });
         this.onModalClickCancel();
       });
@@ -110,22 +128,33 @@ class MainPage extends Component {
         `beer-ja-list-cart-${this.state.email}`,
         JSON.stringify(items)
       );
-      message.success('Buy item', 1, () => {
+      message.error('Buy item', 1, () => {
         this.setState({ cartItems: items });
         this.onModalClickCancel();
       });
     }
   };
 
-
-
-  onClickBuyItem = () => {
-    message.info('coming soon...');
-    this.props.onDismissDialog();
-  };
+  // onClickBuyItem = () => {
+  //   message.info('coming soon...');
+  //   this.props.onDismissDialog();
+  // };
 
   onModalClickCancel = () => {
     this.props.onDismissDialog();
+  };
+
+  checkItemCart = () => {
+    const items = this.state.cartItem;
+    const itemBeer = this.props.itemBeer;
+    const result = items.find(item => {
+      return item.name === itemBeer.name;
+    });
+    if (result) {
+      return 'danger';
+    } else {
+      return '';
+    }
   };
 
   checkItemFavorited = () => {
@@ -147,7 +176,7 @@ class MainPage extends Component {
       <div>
         <div style={{ height: '100vh' }}>
           {' '}
-          <Layout className="layout" style={{ background: 'white' }}>
+          <Layout className="layout" style={{ background: 'dark' }}>
             <Header
               style={{
                 padding: '0px',
@@ -156,8 +185,25 @@ class MainPage extends Component {
                 width: '100%'
               }}
             >
+              {/* <AutoComplete
+                className="certain-category-search"
+                dropdownClassName="certain-category-search-dropdown"
+                dropdownMatchSelectWidth={false}
+                dropdownStyle={{ width: 300 }}
+                size="small"
+                style={{ width: '20%' }}
+                // dataSource={options}
+                placeholder="input here"
+                optionLabelProp="value"
+              >
+                <Input
+                  suffix={
+                    <Icon type="search" className="certain-category-icon" />
+                  }
+                />
+              </AutoComplete> */}
               <Menu
-                theme="light"
+                theme="#3c3c3c"
                 mode="horizontal"
                 defaultSelectedKeys={[this.state.currentMenu]}
                 style={{ lineHeight: '64px' }}
@@ -169,13 +215,12 @@ class MainPage extends Component {
                 <Menu.Item key={menus[1]}>Favorite</Menu.Item>
                 <Menu.Item key={menus[2]}>Cart</Menu.Item>
                 <Menu.Item key={menus[3]}>Profile</Menu.Item>
-               
               </Menu>
             </Header>
             <Content>
               <RouteMenu items={this.state.items} />
             </Content>
-            <Footer style={{ textAlign: 'center', background: 'white' }}>
+            <Footer style={{ textAlign: 'center', background: '#3c3c3c' }}>
               BeerJa Application Workshop @ CAMT
             </Footer>
           </Layout>
@@ -200,7 +245,7 @@ class MainPage extends Component {
                 />,
                 <Button
                   key="submit"
-                  type="primary"
+                  type={this.checkItemCart()}
                   icon="shopping-cart"
                   size="large"
                   shape="circle"
@@ -221,6 +266,10 @@ class MainPage extends Component {
                   style={{ height: '200px', width: 'auto' }}
                 />
               </div>
+              <p>
+                <b>Price:</b> {itemBeer.attenuation_level}
+                <b>$</b>
+              </p>
               <p>
                 <b>Tagline:</b> {itemBeer.tagline}
               </p>

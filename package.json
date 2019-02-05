@@ -5,6 +5,7 @@
   "dependencies": {
     "all": "^0.0.0",
     "antd": "^3.13.0",
+    "axois": "^1.0.0",
     "firebase": "^5.8.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
