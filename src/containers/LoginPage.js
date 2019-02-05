@@ -140,7 +140,7 @@ class LoginPage extends Component {
         </Button>
 
         <Modal
-          title="Something went wrong"
+          title="Create account"
           visible={this.state.isShowModal}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
@@ -153,7 +153,7 @@ class LoginPage extends Component {
             </Button>
           ]}
         >
-          <p>Sorry! not found this account but you want to create account.</p>
+          <p >Sorry! not found this account but you want to create account.</p>
         </Modal>
       </div>
     );
