@@ -213,10 +213,10 @@ class MainPage extends Component {
                   this.onMenuClick(e);
                 }}
               >
-                <Menu.Item key={menus[0]}>Home</Menu.Item>
-                <Menu.Item key={menus[1]}>Favorite</Menu.Item>
-                <Menu.Item key={menus[2]}>Cart</Menu.Item>
-                <Menu.Item key={menus[3]}>Profile</Menu.Item>
+                <Menu.Item key={menus[0]} ><Icon type="home" />Home</Menu.Item>
+                <Menu.Item key={menus[1]}><Icon type="heart" />Favorite</Menu.Item>
+                <Menu.Item key={menus[2]}><Icon type="shopping-cart" />Cart</Menu.Item>
+                <Menu.Item key={menus[3]}><Icon type="user" />Profile</Menu.Item>
               </Menu>
             </Header>
             <Content>
