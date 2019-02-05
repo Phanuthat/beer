@@ -25,6 +25,7 @@ class ListCart extends Component {
             </List.Item>
           )}
         />
+     
       </div>
     );
   }
