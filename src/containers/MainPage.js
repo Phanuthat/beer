@@ -75,6 +75,8 @@ class MainPage extends Component {
     var path = '/';
     path = `/${e.key}`;
     this.props.history.replace(path);
+    console.log(' path', path)
+    this.setState({ currentMenu: path })
   };
 
   onClickFavoriteItem = () => {
@@ -118,7 +120,7 @@ class MainPage extends Component {
         `beer-ja-list-cart-${this.state.email}`,
         JSON.stringify(items)
       );
-      message.success('unCart ', 1, () => {
+      message.error('Canceled Cart ', 1, () => {
         this.setState({ cartItems: items });
         this.onModalClickCancel();
       });
@@ -128,7 +130,7 @@ class MainPage extends Component {
         `beer-ja-list-cart-${this.state.email}`,
         JSON.stringify(items)
       );
-      message.error('Buy item', 1, () => {
+      message.success('Buy item !!', 1, () => {
         this.setState({ cartItems: items });
         this.onModalClickCancel();
       });
@@ -205,7 +207,7 @@ class MainPage extends Component {
               <Menu
                 theme="#3c3c3c"
                 mode="horizontal"
-                defaultSelectedKeys={[this.state.currentMenu]}
+                SelectedKeys={[this.state.currentMenu]}
                 style={{ lineHeight: '64px' }}
                 onClick={e => {
                   this.onMenuClick(e);
