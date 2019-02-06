@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Modal, Button, message, Icon } from 'antd';
+import { Layout, Menu, Modal, Button,Icon,Row, Col } from 'antd';
 import { connect } from 'react-redux';
 import ListCart from '../components/Cart/list_cart';
 
@@ -22,22 +22,17 @@ class CartPage extends Component {
   };
 
   calculate = () => {
-    const kuys = this.getItems();
-    console.log('ssss', kuys[0].attenuation_level);
+    const price = this.getItems();
+    console.log('ssss', price[0].attenuation_level);
     let total = 0;
-    for (let i of kuys) {
+    for (let i of price) {
       total += i.attenuation_level;
     }
     return total;
-
-   
   };
   CheckoutCLick = () => {
-    
     this.props.history.push('/checkout');
   };
-
- 
 
   render() {
     console.log(this.props.isShowDialog);
@@ -52,18 +47,22 @@ class CartPage extends Component {
           minHeight: '600px'
         }}
       >
-        
-        
         <ListCart items={this.getItems()} />
-        <div class="total">
-          <p>{'Discount 0 $'}</p>
-        </div>
-        <div class="total">
-          <p>{'Total ' + this.calculate() + '$'}</p>
-        </div>
-        <div class = "button-right">
-          <Button type="danger" onClick={this.CheckoutCLick}>Check out</Button>
-        </div>
+        
+            
+            <div >
+              <p>{'Discount 0 $'}</p>
+              <p>{'Total ' + this.calculate() + '$'}</p>  
+              <Button type="danger" onClick={this.CheckoutCLick}>
+                Check out
+              </Button>
+            </div>
+            
+           
+         
+         
+          
+        
       </div>
     );
   }
