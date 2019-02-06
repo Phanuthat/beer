@@ -29,6 +29,15 @@
   color: #61dafb;
 }
 
+.total {
+  text-align: right;
+}
+
+.button-right {
+  text-align: right;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
