@@ -36,7 +36,11 @@
 .button-right {
   text-align: right;
 }
-
+.t{
+  position: absolute;
+  left: 300px;
+  top: 60%;
+}
 
 @keyframes App-logo-spin {
   from {
