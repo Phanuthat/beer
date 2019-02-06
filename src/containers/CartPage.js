@@ -23,7 +23,7 @@ class CartPage extends Component {
 
   calculate = () => {
     const price = this.getItems();
-    console.log('ssss', price[0].attenuation_level);
+    // console.log('price', price[0].attenuation_level);
     let total = 0;
     for (let i of price) {
       total += i.attenuation_level;
