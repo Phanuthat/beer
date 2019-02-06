@@ -32,6 +32,10 @@ class CartPage extends Component {
 
    
   };
+  CheckoutCLick = () => {
+    
+    this.props.history.push('/checkout');
+  };
 
  
 
@@ -58,7 +62,7 @@ class CartPage extends Component {
           <p>{'Total ' + this.calculate() + '$'}</p>
         </div>
         <div class = "button-right">
-          <Button type="danger" >Check out</Button>
+          <Button type="danger" onClick={this.CheckoutCLick}>Check out</Button>
         </div>
       </div>
     );
