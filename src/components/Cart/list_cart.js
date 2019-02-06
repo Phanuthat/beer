@@ -3,23 +3,7 @@ import { List } from 'antd';
 import BeerItem from '../beer/item';
 
 class ListCart extends Component {
-  render() {
-    return (
-      <div style={{ minHeight: '300px' }}>
-        <List
-          itemLayout="horizontal"
-          size="large"
-          grid={{ gutter: 16, column: 4 }}
-          dataSource={this.props.items}
-          renderItem={item => (
-            <List.Item>
-              <BeerItem item={item} />
-            </List.Item>
-          )}
-        />
-      </div>
-    );
-  }render() {
+ render() {
     return (
       <div style={{ minHeight: '300px', textAlign: 'left' }}>
         <List
