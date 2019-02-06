@@ -6,8 +6,7 @@ import {
   Button,
   message,
   Icon,
-  Input,
-  AutoComplete
+
 } from 'antd';
 // import axios from 'axios'
 import RouteMenu from './RouteMenu';
@@ -43,7 +42,8 @@ class MainPage extends Component {
     currentMenu: menus[0],
     email: '',
     favItems: [],
-    cartItem: []
+    cartItem: [],
+   
   };
   // getInfo = () => {
   //   axios.get(`${this.state.items}`)
@@ -222,7 +222,7 @@ class MainPage extends Component {
             <Content>
               <RouteMenu items={this.state.items} />
             </Content>
-            <Footer style={{ textAlign: 'center', background: '#3c3c3c' }}>
+            <Footer style={{ textAlign: 'center', background: 'white' }}>
               BeerJa Application Workshop @ CAMT
             </Footer>
           </Layout>

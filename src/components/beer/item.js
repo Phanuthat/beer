@@ -15,6 +15,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+
+
 function BeerItem(props) {
   console.log(props.item.attenuation_level);
   return (
